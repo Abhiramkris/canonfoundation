@@ -16,3 +16,94 @@ contact form mail and interniship email
 rubennkulu09@gmail.com
 adress?
 need events?
+
+
+
+
+admin html for sub,isiion
+
+
+html
+<form id="blog-form">
+    <label for="post-title">Title:</label>
+    <input type="text" id="post-title" name="post-title" required>
+
+    <label for="post-content">Content:</label>
+    <textarea id="post-content" name="post-content" required></textarea>
+
+    <label for="post-image">Image URL:</label>
+    <input type="text" id="post-image" name="post-image" required>
+
+    <input type="submit" value="Submit">
+</form>
+
+
+js 
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Load JSON data as before
+
+    const blogForm = document.getElementById('blog-form');
+
+    blogForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Get form input values
+        const title = document.getElementById('post-title').value;
+        const content = document.getElementById('post-content').value;
+        const image = document.getElementById('post-image').value;
+
+        // Create a new blog post object
+        const newPost = {
+            "title": title,
+            "content": content,
+            "image": image
+        };
+
+        // Add the new blog post to the existing data
+        data.push(newPost);
+
+        // Update the JSON file (assuming you have server-side capabilities to save the JSON)
+        // This example uses the Fetch API for simplicity; you may need to adapt this for your server setup
+        fetch('update-json.php', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(updatedData => {
+            // Do something with the updated data if needed
+            console.log(updatedData);
+        })
+        .catch(error => console.error('Error updating data:', error));
+
+        // Clear the form fields
+        blogForm.reset();
+    });
+});
+
+
+php
+
+
+<?php
+// Read the JSON file
+$jsonFile = 'data.json';
+$jsonData = json_decode(file_get_contents($jsonFile), true);
+
+// Get the new data sent from the form
+$newData = json_decode(file_get_contents('php://input'), true);
+
+// Add the new data to the existing JSON data
+array_push($jsonData, $newData);
+
+// Save the updated JSON data back to the file
+file_put_contents($jsonFile, json_encode($jsonData));
+
+// Return the updated data (optional)
+header('Content-Type: application/json');
+echo json_encode($jsonData);
+?>
+

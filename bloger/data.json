@@ -1,0 +1,12 @@
+[
+    {
+        "title": "Blog Post 1",
+        "content": "This is the content of the first blog post. Lorem ipsum dolor sit amet...",
+        "image": "images/image1.jpg"
+    },
+    {
+        "title": "Blog Post 2",
+        "content": "This is the content of the second blog post. Lorem ipsum dolor sit amet...",
+        "image": "images/image2.jpg"
+    }
+]
