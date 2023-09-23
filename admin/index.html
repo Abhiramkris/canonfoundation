@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+</head>
+<body onload="myFunction()">
+  <h1>Login</h1>
+  <form id="login-form">
+
+  </form>
+
+  <script>
+    function myFunction() {
+      var password = prompt("Please enter your password");
+      if (password === "lol") {
+        alert("welcome admin");
+      } else {
+        alert("Incorrect password.");
+        window.close();
+      }
+    }
+  </script>
+</body>
+</html>
