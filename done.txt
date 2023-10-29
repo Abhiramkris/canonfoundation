@@ -1,7 +1,9 @@
 index.html
 cause-details.html
 cause
-donation
+donation full set change variables
+admin login set
+custom payment link
 
 to do
 blogger
